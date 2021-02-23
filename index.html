@@ -199,7 +199,8 @@
           hAxis: { title: 'Order ID' },
           vAxis: { title: 'Time Taken (s)' },
           legend: { position: "none" },
-        };
+          backgroundColor: '#c04458'
+      }
         var chart = new google.visualization.ColumnChart(document.getElementById('column_chart'));
         chart.draw(data, options);
       });
