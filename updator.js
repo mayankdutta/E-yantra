@@ -1,17 +1,11 @@
-//<script>
 $(document).ready(function () {
   // Fetch the initial table
   refreshMap();
-  setInterval(refreshChart, 5000); // <-- not same as of tus
-
-  // Fetch every 1 second
-
-  refreshChart();
-
-  //from utkarsh
-
   setInterval(refreshMap, 3000);
 
+  //from utkarsh
+  refreshChart();
+  setInterval(refreshChart, 5000); // <-- not same as of tus
   //from utkarsh
 });
 google.charts.load("current", {
@@ -142,14 +136,7 @@ function refreshMap() {
           attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
       }
-      // console.log(trHTML);
       $('#tableContent').html(trHTML);
     }
-    /*console.log(trHTML);
-  $('#tableContent').html(trHTML);
-  var trHTML = '';*/
   });
 }
-//</script>
-
-//jquery end
