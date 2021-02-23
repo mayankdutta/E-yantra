@@ -139,7 +139,60 @@
       // Fetch every 1 second
       setInterval(refreshMap, 1000);
 
+      //from utkarsh
+      setInterval(refreshMap, 3000);
+      setInterval(refreshChart, 5000);
+      //from utkarsh
     });
+    google.charts.load("current", { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(refreshChart);
+
+    function refreshChart() {
+      var jsonDataObjectChart = [];
+      var graph_arr = [['Order ID', 'Time Taken', { role: 'style' }]];
+      var bar_color = [];
+      $.getJSON('https://spreadsheets.google.com/feeds/list/1pv_rYRsZArulYwLj78Y_0dxbCbCRvFPu2Iepmjmn5V0/5/public/full?alt=json', function (data) {
+        for (var i = 0; i < data.feed.entry.length; ++i) {
+          var json_data = {
+            "OderID": data.feed.entry[i].gsx$orderid.$t,
+            "TimeTaken": parseFloat(data.feed.entry[i].gsx$timetaken.$t),
+            "Priority": data.feed.entry[i].gsx$priority.$t
+          };
+          jsonDataObjectChart.push(json_data);
+        };
+        // Setting color for the coloumns of graph according to priority of items
+        for (var j in jsonDataObjectChart) {
+          if (jsonDataObjectChart[j].Priority == 'HP') {
+            var color = '#FF0000';
+          }
+          else if (jsonDataObjectChart[j].Priority == 'MP') {
+            var color = '#FFFF00';
+          }
+          else if (jsonDataObjectChart[j].Priority == 'LP') {
+            var color = '#00FF00';
+          }
+          bar_color.push(color)
+        }
+
+        // Converting Json Object to JavaScript Array
+        // var changed to let
+        for (let j in jsonDataObjectChart) {
+          graph_arr.push([jsonDataObjectChart[j].OderID, jsonDataObjectChart[j].TimeTaken, bar_color[j]]);
+        }
+        let graphArray_Final = google.visualization.arrayToDataTable(graph_arr);
+
+        let data = new google.visualization.DataView(graphArray_Final);
+
+        let options = {
+          title: 'Time Taken for items to be Shipped',
+          hAxis: { title: 'Order ID' },
+          vAxis: { title: 'Time Taken (s)' },
+          legend: { position: "none" },
+        };
+        let chart = new google.visualization.ColumnChart(document.getElementById('column_chart'));
+        chart.draw(data, options);
+      });
+    }
 
     function refreshMap() {
       var container = L.DomUtil.get('map');
@@ -218,7 +271,7 @@
   </script>
 
 
-  <!--jQuery-->
+  <!--jQuery end-->
 
 </body>
 
