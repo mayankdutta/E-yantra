@@ -167,22 +167,23 @@
           jsonDataObjectChart.push(json_data);
         };
         // Setting color for the coloumns of graph according to priority of items
-        for (var j in jsonDataObjectChart) {
-          if (jsonDataObjectChart[j].Priority == 'HP') {
-            var color = '#FF0000';
+        for (let j in jsonDataObjectChart) {
+          let color = '#000000';
+          if (jsonDataObjectChart[j].Priority === 'HP') {
+            color = '#1a85e2';
           }
-          else if (jsonDataObjectChart[j].Priority == 'MP') {
-            var color = '#FFFF00';
+          else if (jsonDataObjectChart[j].Priority === 'MP') {
+            color = '#e98409';
           }
-          else if (jsonDataObjectChart[j].Priority == 'LP') {
-            var color = '#00FF00';
+          else if (jsonDataObjectChart[j].Priority === 'LP') {
+            color = '#b815a2';
           }
           bar_color.push(color)
         }
 
         // Converting Json Object to JavaScript Array
         // var changed to let
-        for (var j in jsonDataObjectChart) {
+        for (let j in jsonDataObjectChart) {
           graph_arr.push([jsonDataObjectChart[j].OderID, jsonDataObjectChart[j].TimeTaken, bar_color[j]]);
         }
         var graphArray_Final = google.visualization.arrayToDataTable(graph_arr);
