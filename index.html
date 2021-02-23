@@ -27,6 +27,11 @@
 
   <!-- 🚨 Notice this link -->
   <link id="dark-theme-style" rel="stylesheet" />
+
+  <!-- for Graph things-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <!-- for Graph things-->
 </head>
 
 <body>
@@ -49,6 +54,7 @@
     <div class="map_leaflet">
 
       <div id="map"></div>
+      <div id="column_chart"></div>
       <!-- <script src="leaflet.js"></script> -->
 
     </div>
@@ -137,7 +143,7 @@
       // Fetch the initial table
       refreshMap();
       // Fetch every 1 second
-      setInterval(refreshMap, 1000);
+      refreshChart();
 
       //from utkarsh
       setInterval(refreshMap, 3000);
@@ -176,20 +182,20 @@
 
         // Converting Json Object to JavaScript Array
         // var changed to let
-        for (let j in jsonDataObjectChart) {
+        for (var j in jsonDataObjectChart) {
           graph_arr.push([jsonDataObjectChart[j].OderID, jsonDataObjectChart[j].TimeTaken, bar_color[j]]);
         }
-        let graphArray_Final = google.visualization.arrayToDataTable(graph_arr);
+        var graphArray_Final = google.visualization.arrayToDataTable(graph_arr);
 
-        let data = new google.visualization.DataView(graphArray_Final);
+        var data = new google.visualization.DataView(graphArray_Final);
 
-        let options = {
+        var options = {
           title: 'Time Taken for items to be Shipped',
           hAxis: { title: 'Order ID' },
           vAxis: { title: 'Time Taken (s)' },
           legend: { position: "none" },
         };
-        let chart = new google.visualization.ColumnChart(document.getElementById('column_chart'));
+        var chart = new google.visualization.ColumnChart(document.getElementById('column_chart'));
         chart.draw(data, options);
       });
     }

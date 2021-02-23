@@ -11,6 +11,13 @@
 #map {
     height: 400px;
     width: 100%;
+    margin-bottom: 50px;
+}
+
+#column_chart { 
+    margin-top: 50px;
+    height: 400px; 
+    width: 100%;
 }
 
 .table {
