@@ -33,7 +33,9 @@ function toggleTheme() {
     } else {
         disableDarkTheme();
     }
-    const META = { isDark };
+    const META = {
+        isDark
+    };
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(META));
 }
 
