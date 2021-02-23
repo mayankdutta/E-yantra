@@ -55,6 +55,7 @@
 
       <div id="map"></div>
       <div id="column_chart"></div>
+
       <!-- <script src="leaflet.js"></script> -->
 
     </div>
@@ -138,6 +139,7 @@
   <!--jQuery-->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
   <script>
     $(document).ready(function () {
       // Fetch the initial table
@@ -146,8 +148,10 @@
       refreshChart();
 
       //from utkarsh
+
       setInterval(refreshMap, 3000);
       setInterval(refreshChart, 5000);
+
       //from utkarsh
     });
     google.charts.load("current", { packages: ['corechart'] });
@@ -202,6 +206,7 @@
     }
 
     function refreshMap() {
+
       var container = L.DomUtil.get('map');
 
       if (container != null) {
@@ -274,9 +279,7 @@
   var trHTML = '';*/
       });
     }
-
   </script>
-
 
   <!--jQuery end-->
 
