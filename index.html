@@ -1,311 +1,128 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Vargi-Bots</title>
+  <head>
+    <title>Vargi-Bots</title>
 
-  <!-- for fonts-->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    <!-- for fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <!-- for map -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin="" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <!-- for map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+                           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+                           crossorigin="" />
 
-  <!-- Make sure you put this AFTER Leaflet's CSS -->
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+                                                                                               integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
-  <!-- 🚨 Notice this link -->
-  <link id="dark-theme-style" rel="stylesheet" />
+    <!-- 🚨 Notice this link -->
+    <link id="dark-theme-style" rel="stylesheet" />
 
-  <!-- for Graph things-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <!-- for Graph things-->
+    <!-- for Graph things-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- for Graph things-->
 
-  <!-- linking updator -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="updator.js"></script>
-</head>
+    <!-- linking updator -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="updator.js"></script>
+  </head>
 
-<body>
-  <div class="container-fluid">
-    <!-- for dark mode  -->
-    <a href="javascript:void()" class="btn btn-outline-info btn-lg ml-auto font-weight-bold" id="theme-toggler"
-      onclick="toggleTheme()"></a>
-    <!-- for dark mode  -->
+  <body>
+    <div class="container-fluid">
+      <!-- for dark mode  -->
+      <a href="javascript:void()" class="btn btn-outline-info btn-lg ml-auto font-weight-bold" id="theme-toggler"
+                                                                                               onclick="toggleTheme()"></a>
+      <!-- for dark mode  -->
 
-    <header>
-      <div id="eyantraLogo" class="text-center">
-        <!-- eyantra logo -->
-        <img src="https://eyic.e-yantra.org/img/eYantra_logo_whitetext.png" alt="e_yantra_logo" width="290"
-          height="60"><br>
+      <header>
+        <div id="eyantraLogo" class="text-center">
+          <!-- eyantra logo -->
+          <img src="https://eyic.e-yantra.org/img/eYantra_logo_whitetext.png" alt="e_yantra_logo" width="290"
+                                                                                                  height="60"><br>
+        </div>
+      </header>
+
+      <h2 class="text-center">VB#1235 Dashboard</h2>
+
+      <div class="map_leaflet">
+
+        <div id="map"></div>
+        <div id="column_chart"></div>
+
+        <!-- <script src="leaflet.js"></script> -->
+
       </div>
-    </header>
 
-    <h2 class="text-center">VB#1235 Dashboard</h2>
-
-    <div class="map_leaflet">
-
-      <div id="map"></div>
-      <div id="column_chart"></div>
-
-      <!-- <script src="leaflet.js"></script> -->
-
+      <div class="table-responsive">
+        <table class="table table table-hover">
+          <thead class="thead-dark">
+            <!-- separate purple heading  -->
+            <tr>
+              <th scope="col">Team ID</th>
+              <th scope="col">Unique ID</th>
+              <th scope="col">Order ID</th>
+              <th scope="col">Item</th>
+              <th scope="col">Priority</th>
+              <th scope="col">Order Quantity</th>
+              <th scope="col">City</th>
+              <th scope="col">Longitude</th>
+              <th scope="col">Latitude</th>
+              <th scope="col">Order Dispatched</th>
+              <th scope="col">Order Shipped</th>
+              <th scope="col">Order Date and Time</th>
+              <th scope="col">Dispatch Time</th>
+              <th scope="col">Shipping Time</th>
+              <th scope="col">Time Taken</th>
+            </tr>
+          </thead>
+          <tbody id="tableContent">
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <div class="table-responsive">
-      <table class="table table table-hover">
-        <thead class="thead-dark">
-          <!-- separate purple heading  -->
-          <tr>
-            <th scope="col">Team ID</th>
-            <th scope="col">Unique ID</th>
-            <th scope="col">Order ID</th>
-            <th scope="col">Item</th>
-            <th scope="col">Priority</th>
-            <th scope="col">Order Quantity</th>
-            <th scope="col">City</th>
-            <th scope="col">Longitude</th>
-            <th scope="col">Latitude</th>
-            <th scope="col">Order Dispatched</th>
-            <th scope="col">Order Shipped</th>
-            <th scope="col">Order Date and Time</th>
-            <th scope="col">Dispatch Time</th>
-            <th scope="col">Shipping Time</th>
-            <th scope="col">Time Taken</th>
-          </tr>
-        </thead>
-        <tbody id="tableContent">
-          <!-- <tr>
-            <th scope="row">1</th>
-            <td>Team ID</td>
-            <td>Unique ID</td>
-            <td>Order ID</td>
-            <td>Item</td>
-            <td>Priority</td>
-            <td>Order Quantity</td>
-            <td>City</td>
-            <td>Longitude</td>
-            <td>Latitude</td>
-            <td>Order Dispatched</td>
-            <td>Order Shipped</td>
-            <td>Order Date and Time</td>
-            <td>Dispatch Time</td>
-            <td>Shipping Time</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Team ID</td>
-            <td>Unique ID</td>
-            <td>Order ID</td>
-            <td>Item</td>
-            <td>Priority</td>
-            <td>Order Quantity</td>
-            <td>City</td>
-            <td>Longitude</td>
-            <td>Latitude</td>
-            <td>Order Dispatched</td>
-            <td>Order Shipped</td>
-            <td>Order Date and Time</td>
-            <td>Dispatch Time</td>
-            <td>Shipping Time</td>
-          </tr>
-          <tr>
-          </tr> -->
-        </tbody>
-      </table>
-    </div>
-  </div>
+    <!--  🚨 Our custom JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+    <script src="dark_mode.js"></script>
 
-  <!--  🚨 Our custom JavaScript -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-    crossorigin="anonymous"></script>
-  <script src="dark_mode.js"></script>
+    <!--jQuery-->
+    <!--moved to updator.js-->
+    <!--jQuery end-->
 
-  <!--jQuery-->
+  </body>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-  <script>
-    //code added to updator.js
-//    $(document).ready(function () {
-//      // Fetch the initial table
-//      refreshMap();
-//      setInterval(refreshChart, 5000); // <-- not same as of tus
-//
-//      // Fetch every 1 second
-//
-//      refreshChart();
-//
-//      //from utkarsh
-//
-//      setInterval(refreshMap, 3000);
-//
-//      //from utkarsh
-//    });
-//    google.charts.load("current", { packages: ['corechart'] });
-//    google.charts.setOnLoadCallback(refreshChart);
-//
-//    function refreshChart() {
-//      var jsonDataObjectChart = [];
-//      var graph_arr = [['Order ID', 'Time Taken', { role: 'style' }]];
-//      var bar_color = [];
-//      $.getJSON('https://spreadsheets.google.com/feeds/list/1pv_rYRsZArulYwLj78Y_0dxbCbCRvFPu2Iepmjmn5V0/5/public/full?alt=json', function (data) {
-//        for (var i = 0; i < data.feed.entry.length; ++i) {
-//          var json_data = {
-//            "OderID": data.feed.entry[i].gsx$orderid.$t,
-//            "TimeTaken": parseFloat(data.feed.entry[i].gsx$timetaken.$t),
-//            "Priority": data.feed.entry[i].gsx$priority.$t
-//          };
-//          jsonDataObjectChart.push(json_data);
-//        };
-//        // Setting color for the coloumns of graph according to priority of items
-//        for (let j in jsonDataObjectChart) {
-//          let color = '#000000';
-//          if (jsonDataObjectChart[j].Priority === 'HP') {
-//            color = '#1a85e2';
-//          }
-//          else if (jsonDataObjectChart[j].Priority === 'MP') {
-//            color = '#e98409';
-//          }
-//          else if (jsonDataObjectChart[j].Priority === 'LP') {
-//            color = '#b815a2';
-//          }
-//          bar_color.push(color)
-//        }
-//
-//        // Converting Json Object to JavaScript Array
-//        // var changed to let
-//        for (let j in jsonDataObjectChart) {
-//          graph_arr.push([jsonDataObjectChart[j].OderID, jsonDataObjectChart[j].TimeTaken, bar_color[j]]);
-//        }
-//        var graphArray_Final = google.visualization.arrayToDataTable(graph_arr);
-//
-//        var data = new google.visualization.DataView(graphArray_Final);
-//
-//        var options = {
-//          title: 'Time Taken for items to be Shipped',
-//          hAxis: { title: 'Order ID' },
-//          vAxis: { title: 'Time Taken (s)' },
-//          legend: { position: "none" },
-//          backgroundColor: '#c04458'
-//        }
-//        var chart = new google.visualization.ColumnChart(document.getElementById('column_chart'));
-//        chart.draw(data, options);
-//      });
-//    }
-//
-//    function refreshMap() {
-//
-//      var container = L.DomUtil.get('map');
-//
-//      if (container != null) {
-//        container._leaflet_id = null;
-//      }
-//
-//      var map = L.map('map').setView([20.5937, 78.9629], 4);
-//      var jsonDataObject = [];
-//
-//      $.getJSON('https://spreadsheets.google.com/feeds/list/1pv_rYRsZArulYwLj78Y_0dxbCbCRvFPu2Iepmjmn5V0/5/public/full?alt=json', function (data) {
-//
-//        var trHTML = '';
-//        for (var i = 0; i < data.feed.entry.length; ++i) {
-//          var myData_map, myData_order;
-//
-//          trHTML +=
-//            '<tr><td>' + data.feed.entry[i].gsx$teamid.$t +  // adding th scope = "row" 1 here !!
-//            '</td><td>' + data.feed.entry[i].gsx$uniqueid.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$orderid.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$item.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$priority.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$orderquantity.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$city.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$longitude.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$latitude.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$orderdispatched.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$ordershipped.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$orderdateandtime.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$dispatchtime.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$shippingtime.$t +
-//            '</td><td>' + data.feed.entry[i].gsx$timetaken.$t +
-//            '</td></tr>';
-//
-//          var json_data = {
-//            "City": data.feed.entry[i].gsx$city.$t,
-//            "OderID": data.feed.entry[i].gsx$orderid.$t,
-//            "Item": data.feed.entry[i].gsx$item.$t,
-//            "Latitude": parseFloat(data.feed.entry[i].gsx$latitude.$t),
-//            "Longitude": parseFloat(data.feed.entry[i].gsx$longitude.$t)
-//          };
-//          jsonDataObject.push(json_data);
-//
-//          for (var j = 0; j < jsonDataObject.length; j++) {
-//            var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)));
-//            marker.bindPopup(jsonDataObject[j].City, {
-//              autoClose: false
-//            });
-//            map.addLayer(marker);
-//            marker.on('click', onClick_Marker)
-//            // Attach the corresponding JSON data to your marker:
-//            marker.myJsonData = jsonDataObject[j];
-//
-//            function onClick_Marker(e) {
-//              var marker = e.target;
-//              popup = L.popup()
-//                .setLatLng(marker.getLatLng())
-//                .setContent("Order ID: " + marker.myJsonData.OderID + " || Item: " + marker.myJsonData.Item)
-//                .openOn(map);
-//            }
-//
-//            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//              attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-//            }).addTo(map);
-//          }
-//          // console.log(trHTML);
-//          $('#tableContent').html(trHTML);
-//        }
-//        /*console.log(trHTML);
-//  $('#tableContent').html(trHTML);
-//  var trHTML = '';*/
-//      });
-//    }
-  </script>
-
-  <!--jQuery end-->
-
-</body>
-
-<table class="table">
-  <tbody>
-    <tr>
-      <td>
-        <div class="footer" class="footerOne">
-        </div>
-      </td>
-      <td>
-        <div class="footer" class="footerTwo">
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <div class="footer" class="footerOne">
+          </div>
+        </td>
+        <td>
+          <div class="footer" class="footerTwo">
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 </html>
