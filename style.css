@@ -1,0 +1,30 @@
+#eyantraLogo {
+    margin: 3%;
+}
+
+.map {
+    padding: 2%;
+    border: 2px solid;
+    margin: 3%;
+}
+
+#mapid { 
+    height: 400px;
+    width: 100%;
+}
+
+.table {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+}
+
+.btn {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer {
+    padding-top: 55px;
+    border-bottom: 3px solid;
+    margin-bottom: 25px;
+}
+
