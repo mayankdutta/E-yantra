@@ -1,0 +1,42 @@
+#eyantraLogo {
+    margin: 1.5%;
+}
+
+.map_leaflet {
+    /*padding-left: 5%;*/
+    /*padding-right: 5%;*/
+    /*border: 2px solid;*/
+
+    margin: 3%;
+    display: flex;
+    align-items: baseline;
+}
+
+#map {
+    height: 400px;
+    width: 50%;
+    margin-bottom: 50px;
+    margin-right: 10px;
+}
+
+#column_chart { 
+    /*margin-top: 50px;*/
+    margin-left: 50px;
+    height: 400px;
+    width: 50%;
+}
+
+.table {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+}
+
+.btn {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer {
+    padding-top: 55px;
+    border-bottom: 3px solid;
+    margin-bottom: 25px;
+}
